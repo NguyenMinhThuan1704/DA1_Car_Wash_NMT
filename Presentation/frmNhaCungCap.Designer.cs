@@ -31,10 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaCungCap));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnWord = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -44,8 +46,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.dgvNCC = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +63,7 @@
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.btnExcel);
+            this.groupBox1.Controls.Add(this.btnWord);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -82,6 +82,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin nhà cung cấp";
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(611, 39);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(326, 26);
+            this.txtAddress.TabIndex = 16;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(135, 96);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(326, 26);
+            this.txtName.TabIndex = 15;
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Gray;
@@ -94,6 +108,7 @@
             this.btnSearch.Size = new System.Drawing.Size(72, 38);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReset
             // 
@@ -116,18 +131,19 @@
             this.txtSearch.Size = new System.Drawing.Size(241, 26);
             this.txtSearch.TabIndex = 12;
             // 
-            // btnExcel
+            // btnWord
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExcel.FlatAppearance.BorderSize = 0;
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Location = new System.Drawing.Point(355, 167);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(100, 38);
-            this.btnExcel.TabIndex = 10;
-            this.btnExcel.Text = "Xuất Excel";
-            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnWord.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnWord.FlatAppearance.BorderSize = 0;
+            this.btnWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWord.ForeColor = System.Drawing.Color.White;
+            this.btnWord.Location = new System.Drawing.Point(355, 167);
+            this.btnWord.Name = "btnWord";
+            this.btnWord.Size = new System.Drawing.Size(100, 38);
+            this.btnWord.TabIndex = 10;
+            this.btnWord.Text = "Xuất Word";
+            this.btnWord.UseVisualStyleBackColor = false;
+            this.btnWord.Click += new System.EventHandler(this.btnWord_Click);
             // 
             // btnDelete
             // 
@@ -221,20 +237,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã nhà cung cấp:";
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(135, 96);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(326, 26);
-            this.txtName.TabIndex = 15;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(611, 39);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(326, 26);
-            this.txtAddress.TabIndex = 16;
-            // 
             // dgvNCC
             // 
             this.dgvNCC.AllowUserToAddRows = false;
@@ -322,7 +324,7 @@
         public System.Windows.Forms.Button btnSearch;
         public System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TextBox txtSearch;
-        public System.Windows.Forms.Button btnExcel;
+        public System.Windows.Forms.Button btnWord;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Button btnUpdate;
         public System.Windows.Forms.Button btnAdd;

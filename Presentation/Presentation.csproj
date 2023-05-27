@@ -46,11 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bien.cs" />
+    <Compile Include="frmBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoCao.Designer.cs">
+      <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDichVu.Designer.cs">
       <DependentUpon>frmDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHoaDon.Designer.cs">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportHoaDon.Designer.cs">
+      <DependentUpon>frmImportHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="frmKhachHang.cs">
       <SubType>Form</SubType>
@@ -94,6 +113,12 @@
     <Compile Include="frmSlider.Designer.cs">
       <DependentUpon>frmSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaiKhoan.Designer.cs">
+      <DependentUpon>frmTaiKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Class.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,8 +139,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBaoCao.resx">
+      <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDichVu.resx">
       <DependentUpon>frmDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHoaDon.resx">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportHoaDon.resx">
+      <DependentUpon>frmImportHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
@@ -137,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSlider.resx">
       <DependentUpon>frmSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaiKhoan.resx">
+      <DependentUpon>frmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Class.resx">
       <DependentUpon>frm_Class.cs</DependentUpon>

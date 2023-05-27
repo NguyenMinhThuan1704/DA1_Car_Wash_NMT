@@ -26,6 +26,13 @@ namespace Entities
             this.Diachi = kh.Diachi;
             this.Dienthoai = kh.Dienthoai;
         }
+        public KhachHangDTO(string tenkh, int maloaixe, string diachi, string dienthoai)
+        {
+            this.Tenkh = tenkh;
+            this.Maloaixe = maloaixe;
+            this.Diachi = diachi;
+            this.Dienthoai = dienthoai;
+        }
         public KhachHangDTO(int makh, string tenkh, int maloaixe, string diachi, string dienthoai)
         {
             this.Makh = makh;

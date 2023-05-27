@@ -32,9 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnNcc = new System.Windows.Forms.Button();
             this.btnKho = new System.Windows.Forms.Button();
             this.btnthoat = new System.Windows.Forms.Button();
-            this.btncaidat = new System.Windows.Forms.Button();
             this.btnbaocao = new System.Windows.Forms.Button();
             this.btntinhtien = new System.Windows.Forms.Button();
             this.btndichvu = new System.Windows.Forms.Button();
@@ -46,7 +46,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
-            this.btnNcc = new System.Windows.Forms.Button();
+            this.btncaidat = new System.Windows.Forms.Button();
+            this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_logo.SuspendLayout();
@@ -73,10 +74,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnTaiKhoan);
+            this.panel2.Controls.Add(this.btncaidat);
             this.panel2.Controls.Add(this.btnNcc);
             this.panel2.Controls.Add(this.btnKho);
             this.panel2.Controls.Add(this.btnthoat);
-            this.panel2.Controls.Add(this.btncaidat);
             this.panel2.Controls.Add(this.btnbaocao);
             this.panel2.Controls.Add(this.btntinhtien);
             this.panel2.Controls.Add(this.btndichvu);
@@ -91,6 +93,22 @@
             this.panel2.Size = new System.Drawing.Size(202, 727);
             this.panel2.TabIndex = 3;
             // 
+            // btnNcc
+            // 
+            this.btnNcc.BackColor = System.Drawing.Color.Transparent;
+            this.btnNcc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNcc.FlatAppearance.BorderSize = 0;
+            this.btnNcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNcc.Image = ((System.Drawing.Image)(resources.GetObject("btnNcc.Image")));
+            this.btnNcc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNcc.Location = new System.Drawing.Point(0, 451);
+            this.btnNcc.Name = "btnNcc";
+            this.btnNcc.Size = new System.Drawing.Size(202, 45);
+            this.btnNcc.TabIndex = 10;
+            this.btnNcc.Text = "Nhà cung cấp";
+            this.btnNcc.UseVisualStyleBackColor = false;
+            this.btnNcc.Click += new System.EventHandler(this.btnNcc_Click);
+            // 
             // btnKho
             // 
             this.btnKho.BackColor = System.Drawing.Color.Transparent;
@@ -99,7 +117,7 @@
             this.btnKho.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKho.Image = ((System.Drawing.Image)(resources.GetObject("btnKho.Image")));
             this.btnKho.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnKho.Location = new System.Drawing.Point(0, 451);
+            this.btnKho.Location = new System.Drawing.Point(0, 406);
             this.btnKho.Name = "btnKho";
             this.btnKho.Size = new System.Drawing.Size(202, 45);
             this.btnKho.TabIndex = 9;
@@ -123,21 +141,6 @@
             this.btnthoat.UseVisualStyleBackColor = false;
             this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
             // 
-            // btncaidat
-            // 
-            this.btncaidat.BackColor = System.Drawing.Color.Transparent;
-            this.btncaidat.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btncaidat.FlatAppearance.BorderSize = 0;
-            this.btncaidat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncaidat.Image = ((System.Drawing.Image)(resources.GetObject("btncaidat.Image")));
-            this.btncaidat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncaidat.Location = new System.Drawing.Point(0, 406);
-            this.btncaidat.Name = "btncaidat";
-            this.btncaidat.Size = new System.Drawing.Size(202, 45);
-            this.btncaidat.TabIndex = 7;
-            this.btncaidat.Text = "Cài đặt";
-            this.btncaidat.UseVisualStyleBackColor = false;
-            // 
             // btnbaocao
             // 
             this.btnbaocao.BackColor = System.Drawing.Color.Transparent;
@@ -152,6 +155,7 @@
             this.btnbaocao.TabIndex = 6;
             this.btnbaocao.Text = "Báo cáo";
             this.btnbaocao.UseVisualStyleBackColor = false;
+            this.btnbaocao.Click += new System.EventHandler(this.btnbaocao_Click);
             // 
             // btntinhtien
             // 
@@ -167,6 +171,7 @@
             this.btntinhtien.TabIndex = 5;
             this.btntinhtien.Text = "Hóa đơn";
             this.btntinhtien.UseVisualStyleBackColor = false;
+            this.btntinhtien.Click += new System.EventHandler(this.btntinhtien_Click);
             // 
             // btndichvu
             // 
@@ -284,21 +289,37 @@
             this.panelChild.Size = new System.Drawing.Size(967, 683);
             this.panelChild.TabIndex = 2;
             // 
-            // btnNcc
+            // btncaidat
             // 
-            this.btnNcc.BackColor = System.Drawing.Color.Transparent;
-            this.btnNcc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnNcc.FlatAppearance.BorderSize = 0;
-            this.btnNcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNcc.Image = ((System.Drawing.Image)(resources.GetObject("btnNcc.Image")));
-            this.btnNcc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNcc.Location = new System.Drawing.Point(0, 496);
-            this.btnNcc.Name = "btnNcc";
-            this.btnNcc.Size = new System.Drawing.Size(202, 45);
-            this.btnNcc.TabIndex = 10;
-            this.btnNcc.Text = "Nhà cung cấp";
-            this.btnNcc.UseVisualStyleBackColor = false;
-            this.btnNcc.Click += new System.EventHandler(this.btnNcc_Click);
+            this.btncaidat.BackColor = System.Drawing.Color.Transparent;
+            this.btncaidat.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btncaidat.FlatAppearance.BorderSize = 0;
+            this.btncaidat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btncaidat.Image = ((System.Drawing.Image)(resources.GetObject("btncaidat.Image")));
+            this.btncaidat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btncaidat.Location = new System.Drawing.Point(0, 637);
+            this.btncaidat.Name = "btncaidat";
+            this.btncaidat.Size = new System.Drawing.Size(202, 45);
+            this.btncaidat.TabIndex = 12;
+            this.btncaidat.Text = "Cài đặt";
+            this.btncaidat.UseVisualStyleBackColor = false;
+            this.btncaidat.Click += new System.EventHandler(this.btncaidat_Click);
+            // 
+            // btnTaiKhoan
+            // 
+            this.btnTaiKhoan.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaiKhoan.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTaiKhoan.FlatAppearance.BorderSize = 0;
+            this.btnTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTaiKhoan.Image = ((System.Drawing.Image)(resources.GetObject("btnTaiKhoan.Image")));
+            this.btnTaiKhoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 592);
+            this.btnTaiKhoan.Name = "btnTaiKhoan";
+            this.btnTaiKhoan.Size = new System.Drawing.Size(202, 45);
+            this.btnTaiKhoan.TabIndex = 13;
+            this.btnTaiKhoan.Text = "Tài khoản";
+            this.btnTaiKhoan.UseVisualStyleBackColor = false;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // frmMain
             // 
@@ -327,7 +348,6 @@
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnthoat;
-        private System.Windows.Forms.Button btncaidat;
         private System.Windows.Forms.Button btnbaocao;
         private System.Windows.Forms.Button btntinhtien;
         private System.Windows.Forms.Button btndichvu;
@@ -341,5 +361,7 @@
         private System.Windows.Forms.Panel panelChild;
         private System.Windows.Forms.Button btnKho;
         private System.Windows.Forms.Button btnNcc;
+        private System.Windows.Forms.Button btnTaiKhoan;
+        private System.Windows.Forms.Button btncaidat;
     }
 }

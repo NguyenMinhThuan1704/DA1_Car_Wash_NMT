@@ -72,9 +72,9 @@ namespace BusinessLogicLayer
 
         public List<dynamic> SearchLinq(string value)
         {
-            return getAllJoin().Where(x => (string.IsNullOrEmpty(value) || x.Mathuoc.ToString().Contains(value) ||
-               (x.Tenthuoc.ToString() == value) ||
-               (string.IsNullOrEmpty(value) || x.Tenthuoc.Contains(value)))).ToList();
+            return getAllJoin().Where(x => (string.IsNullOrEmpty(value) || x.Madnk.ToString().Contains(value) ||
+               (string.IsNullOrEmpty(value) || x.Tennv.Contains(value)) ||
+               (string.IsNullOrEmpty(value) || x.Tenncc.Contains(value)))).ToList();
         }
 
         public void ThemTuExcel(string filePath)

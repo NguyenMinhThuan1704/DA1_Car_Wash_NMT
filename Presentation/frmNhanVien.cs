@@ -133,7 +133,7 @@ namespace Presentation
             }
             txtAddress.Text = dgvEmployer[3, dgvEmployer.CurrentCell.RowIndex].Value.ToString();
             txtPhone.Text = dgvEmployer[4, dgvEmployer.CurrentCell.RowIndex].Value.ToString();
-            dtBd.Text = dgvEmployer[5, dgvEmployer.CurrentCell.RowIndex].Value.ToString();
+            dtBd.Text = Utility.Tools.CatXauDate(dgvEmployer[5, dgvEmployer.CurrentCell.RowIndex].Value.ToString());
             //txtBd.Text = Utility.Tools.CatXauDate(dgvEmployer[5, dgvEmployer.CurrentCell.RowIndex].Value.ToString());
         }
 
@@ -163,6 +163,26 @@ namespace Presentation
         private void btnSearch_Click(object sender, EventArgs e)
         {
             dgvEmployer.DataSource = NV.SearchLinq(txtSearch.Text);
+        }
+
+        private void btnWord_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Microsoft Word | *.docx";
+            saveFileDialog.Title = "Lưu thông tin nhân viên";
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.FileName != "")
+            {
+                try
+                {
+                    NV.KetXuatWord(@"Template\NhanVien.docx", saveFileDialog.FileName);
+                    MessageBox.Show("Kết xuất thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông báo lỗi");
+                }
+            }
         }
     }
 }

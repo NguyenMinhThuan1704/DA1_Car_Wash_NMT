@@ -14,6 +14,7 @@ namespace BusinessLogicLayer.Interface
         int Update(NCCDTO cls);
         IList<NCCDTO> getAll();
         int checkNCC_ID(int mancc);
-        IList<NCCDTO> SearchLinq(NCCDTO cls);
+        IList<NCCDTO> SearchLinq(string value);
+        void KetXuatWord(string templatePath, string exportPath);
     }
 }

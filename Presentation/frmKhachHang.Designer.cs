@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
             this.cbCarType = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnWord = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -40,6 +40,11 @@
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.clid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clhoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clloaixe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cldiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cldienthoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,11 +54,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.clid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clhoten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clloaixe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cldiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cldienthoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -73,18 +73,19 @@
             this.txtSearch.Size = new System.Drawing.Size(326, 26);
             this.txtSearch.TabIndex = 14;
             // 
-            // btnExcel
+            // btnWord
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExcel.FlatAppearance.BorderSize = 0;
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Location = new System.Drawing.Point(363, 242);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(98, 38);
-            this.btnExcel.TabIndex = 10;
-            this.btnExcel.Text = "Xuất Excel";
-            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnWord.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnWord.FlatAppearance.BorderSize = 0;
+            this.btnWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWord.ForeColor = System.Drawing.Color.White;
+            this.btnWord.Location = new System.Drawing.Point(363, 242);
+            this.btnWord.Name = "btnWord";
+            this.btnWord.Size = new System.Drawing.Size(98, 38);
+            this.btnWord.TabIndex = 10;
+            this.btnWord.Text = "Xuất Word";
+            this.btnWord.UseVisualStyleBackColor = false;
+            this.btnWord.Click += new System.EventHandler(this.btnWord_Click);
             // 
             // btnDelete
             // 
@@ -182,6 +183,45 @@
             this.dgvCustomer.TabIndex = 6;
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
+            // clid
+            // 
+            this.clid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clid.DataPropertyName = "MaKH";
+            this.clid.HeaderText = "ID";
+            this.clid.Name = "clid";
+            this.clid.Width = 48;
+            // 
+            // clhoten
+            // 
+            this.clhoten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clhoten.DataPropertyName = "TenKH";
+            this.clhoten.HeaderText = "Họ tên";
+            this.clhoten.Name = "clhoten";
+            this.clhoten.Width = 79;
+            // 
+            // clloaixe
+            // 
+            this.clloaixe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clloaixe.DataPropertyName = "TenLoaiXe";
+            this.clloaixe.HeaderText = "Loại xe";
+            this.clloaixe.Name = "clloaixe";
+            this.clloaixe.Width = 81;
+            // 
+            // cldiachi
+            // 
+            this.cldiachi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cldiachi.DataPropertyName = "DiaChi";
+            this.cldiachi.HeaderText = "Địa chỉ";
+            this.cldiachi.Name = "cldiachi";
+            // 
+            // cldienthoai
+            // 
+            this.cldienthoai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cldienthoai.DataPropertyName = "sdt";
+            this.cldienthoai.HeaderText = "Điện thoại";
+            this.cldienthoai.Name = "cldienthoai";
+            this.cldienthoai.Width = 103;
+            // 
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(135, 42);
@@ -241,7 +281,7 @@
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.cbCarType);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.btnExcel);
+            this.groupBox1.Controls.Add(this.btnWord);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -291,45 +331,6 @@
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // clid
-            // 
-            this.clid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clid.DataPropertyName = "MaKH";
-            this.clid.HeaderText = "ID";
-            this.clid.Name = "clid";
-            this.clid.Width = 48;
-            // 
-            // clhoten
-            // 
-            this.clhoten.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clhoten.DataPropertyName = "TenKH";
-            this.clhoten.HeaderText = "Họ tên";
-            this.clhoten.Name = "clhoten";
-            this.clhoten.Width = 79;
-            // 
-            // clloaixe
-            // 
-            this.clloaixe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clloaixe.DataPropertyName = "TenLoaiXe";
-            this.clloaixe.HeaderText = "Loại xe";
-            this.clloaixe.Name = "clloaixe";
-            this.clloaixe.Width = 81;
-            // 
-            // cldiachi
-            // 
-            this.cldiachi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cldiachi.DataPropertyName = "DiaChi";
-            this.cldiachi.HeaderText = "Địa chỉ";
-            this.cldiachi.Name = "cldiachi";
-            // 
-            // cldienthoai
-            // 
-            this.cldienthoai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cldienthoai.DataPropertyName = "Sdt";
-            this.cldienthoai.HeaderText = "Điện thoại";
-            this.cldienthoai.Name = "cldienthoai";
-            this.cldienthoai.Width = 103;
-            // 
             // frmKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,7 +352,7 @@
         #endregion
         private System.Windows.Forms.ComboBox cbCarType;
         private System.Windows.Forms.TextBox txtSearch;
-        public System.Windows.Forms.Button btnExcel;
+        public System.Windows.Forms.Button btnWord;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Button btnUpdate;
         public System.Windows.Forms.Button btnAdd;

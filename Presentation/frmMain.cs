@@ -44,6 +44,18 @@ namespace Presentation
             panelSlide.Top = btndichvu.Top;
             openChildForm(new frmDichVu());
         }
+        private void btntinhtien_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btntinhtien.Height;
+            panelSlide.Top = btntinhtien.Top;
+            openChildForm(new frmHoaDon());
+        }
+        private void btnbaocao_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btnbaocao.Height;
+            panelSlide.Top = btnbaocao.Top;
+            openChildForm(new frmBaoCao());
+        }
 
         private void btnKho_Click(object sender, EventArgs e)
         {
@@ -56,6 +68,17 @@ namespace Presentation
             panelSlide.Height = btnNcc.Height;
             panelSlide.Top = btnNcc.Top;
             openChildForm(new frmNhaCungCap());
+        }
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btnTaiKhoan.Height;
+            panelSlide.Top = btnTaiKhoan.Top;
+            openChildForm(new frmTaiKhoan());
+        }
+        private void btncaidat_Click(object sender, EventArgs e)
+        {
+            panelSlide.Height = btncaidat.Height;
+            panelSlide.Top = btncaidat.Top;
         }
 
         private void btnthoat_Click(object sender, EventArgs e)

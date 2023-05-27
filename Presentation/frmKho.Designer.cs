@@ -33,29 +33,39 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvCTDNKho = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtMaCTNK_CTDNK = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtGiaNhap_CTDNK = new System.Windows.Forms.TextBox();
             this.cbDichVu_CTDNK = new System.Windows.Forms.ComboBox();
             this.btnSearch_CTDNK = new System.Windows.Forms.Button();
             this.btnReset_CTDNK = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnExcel_CTDNK = new System.Windows.Forms.Button();
+            this.txtSearch_CTDNK = new System.Windows.Forms.TextBox();
+            this.btnWord_CTDNK = new System.Windows.Forms.Button();
             this.btnDelete_CTDNK = new System.Windows.Forms.Button();
             this.btnUpdate_CTDNK = new System.Windows.Forms.Button();
             this.btnAdd_CTDNK = new System.Windows.Forms.Button();
             this.txtSoLuongNhap_CTDNK = new System.Windows.Forms.TextBox();
-            this.txtMDNK_CTDNK = new System.Windows.Forms.TextBox();
+            this.txtMaDNK_CTDNK = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvDNKho = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnWord_DNK = new System.Windows.Forms.Button();
+            this.dtDate_DNK = new System.Windows.Forms.DateTimePicker();
             this.cbNcc_DNK = new System.Windows.Forms.ComboBox();
             this.cbNhanVien_DNK = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,13 +83,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.btnWord_DNK = new System.Windows.Forms.Button();
-            this.dtDate_DNK = new System.Windows.Forms.DateTimePicker();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTDNKho)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -120,6 +123,7 @@
             this.dgvCTDNKho.ColumnHeadersHeight = 35;
             this.dgvCTDNKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCTDNKho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column5,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4,
@@ -131,19 +135,28 @@
             this.dgvCTDNKho.RowHeadersVisible = false;
             this.dgvCTDNKho.Size = new System.Drawing.Size(953, 386);
             this.dgvCTDNKho.TabIndex = 9;
+            this.dgvCTDNKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCTDNKho_CellClick);
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column5.DataPropertyName = "MaCTNK";
+            this.Column5.HeaderText = "Mã CTDNK";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 109;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "MaDNK";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã đơn nhập kho";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 48;
+            this.dataGridViewTextBoxColumn1.Width = 160;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "TenDV";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "TenDichVu";
             this.dataGridViewTextBoxColumn2.HeaderText = "Dịch vụ";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
@@ -166,17 +179,19 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.txtMaCTNK_CTDNK);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtGiaNhap_CTDNK);
             this.groupBox2.Controls.Add(this.cbDichVu_CTDNK);
             this.groupBox2.Controls.Add(this.btnSearch_CTDNK);
             this.groupBox2.Controls.Add(this.btnReset_CTDNK);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.btnExcel_CTDNK);
+            this.groupBox2.Controls.Add(this.txtSearch_CTDNK);
+            this.groupBox2.Controls.Add(this.btnWord_CTDNK);
             this.groupBox2.Controls.Add(this.btnDelete_CTDNK);
             this.groupBox2.Controls.Add(this.btnUpdate_CTDNK);
             this.groupBox2.Controls.Add(this.btnAdd_CTDNK);
             this.groupBox2.Controls.Add(this.txtSoLuongNhap_CTDNK);
-            this.groupBox2.Controls.Add(this.txtMDNK_CTDNK);
+            this.groupBox2.Controls.Add(this.txtMaDNK_CTDNK);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
@@ -190,6 +205,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin chi tiết đơn nhập kho";
             // 
+            // txtMaCTNK_CTDNK
+            // 
+            this.txtMaCTNK_CTDNK.Location = new System.Drawing.Point(156, 39);
+            this.txtMaCTNK_CTDNK.Name = "txtMaCTNK_CTDNK";
+            this.txtMaCTNK_CTDNK.Size = new System.Drawing.Size(326, 26);
+            this.txtMaCTNK_CTDNK.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 19);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Mã chi tiết nhập kho:";
+            // 
             // txtGiaNhap_CTDNK
             // 
             this.txtGiaNhap_CTDNK.Location = new System.Drawing.Point(611, 42);
@@ -200,7 +231,7 @@
             // cbDichVu_CTDNK
             // 
             this.cbDichVu_CTDNK.FormattingEnabled = true;
-            this.cbDichVu_CTDNK.Location = new System.Drawing.Point(135, 96);
+            this.cbDichVu_CTDNK.Location = new System.Drawing.Point(156, 149);
             this.cbDichVu_CTDNK.Name = "cbDichVu_CTDNK";
             this.cbDichVu_CTDNK.Size = new System.Drawing.Size(326, 27);
             this.cbDichVu_CTDNK.TabIndex = 16;
@@ -212,11 +243,12 @@
             this.btnSearch_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch_CTDNK.ForeColor = System.Drawing.Color.White;
             this.btnSearch_CTDNK.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch_CTDNK.Image")));
-            this.btnSearch_CTDNK.Location = new System.Drawing.Point(865, 172);
+            this.btnSearch_CTDNK.Location = new System.Drawing.Point(865, 208);
             this.btnSearch_CTDNK.Name = "btnSearch_CTDNK";
             this.btnSearch_CTDNK.Size = new System.Drawing.Size(72, 38);
             this.btnSearch_CTDNK.TabIndex = 13;
             this.btnSearch_CTDNK.UseVisualStyleBackColor = false;
+            this.btnSearch_CTDNK.Click += new System.EventHandler(this.btnSearch_CTDNK_Click);
             // 
             // btnReset_CTDNK
             // 
@@ -224,32 +256,34 @@
             this.btnReset_CTDNK.FlatAppearance.BorderSize = 0;
             this.btnReset_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset_CTDNK.ForeColor = System.Drawing.Color.White;
-            this.btnReset_CTDNK.Location = new System.Drawing.Point(490, 173);
+            this.btnReset_CTDNK.Location = new System.Drawing.Point(490, 209);
             this.btnReset_CTDNK.Name = "btnReset_CTDNK";
             this.btnReset_CTDNK.Size = new System.Drawing.Size(100, 38);
             this.btnReset_CTDNK.TabIndex = 11;
             this.btnReset_CTDNK.Text = "Làm mới";
             this.btnReset_CTDNK.UseVisualStyleBackColor = false;
+            this.btnReset_CTDNK.Click += new System.EventHandler(this.btnReset_CTDNK_Click);
             // 
-            // textBox1
+            // txtSearch_CTDNK
             // 
-            this.textBox1.Location = new System.Drawing.Point(618, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(241, 26);
-            this.textBox1.TabIndex = 12;
+            this.txtSearch_CTDNK.Location = new System.Drawing.Point(618, 215);
+            this.txtSearch_CTDNK.Name = "txtSearch_CTDNK";
+            this.txtSearch_CTDNK.Size = new System.Drawing.Size(241, 26);
+            this.txtSearch_CTDNK.TabIndex = 12;
             // 
-            // btnExcel_CTDNK
+            // btnWord_CTDNK
             // 
-            this.btnExcel_CTDNK.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExcel_CTDNK.FlatAppearance.BorderSize = 0;
-            this.btnExcel_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel_CTDNK.ForeColor = System.Drawing.Color.White;
-            this.btnExcel_CTDNK.Location = new System.Drawing.Point(355, 173);
-            this.btnExcel_CTDNK.Name = "btnExcel_CTDNK";
-            this.btnExcel_CTDNK.Size = new System.Drawing.Size(100, 38);
-            this.btnExcel_CTDNK.TabIndex = 10;
-            this.btnExcel_CTDNK.Text = "Xuất Excel";
-            this.btnExcel_CTDNK.UseVisualStyleBackColor = false;
+            this.btnWord_CTDNK.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnWord_CTDNK.FlatAppearance.BorderSize = 0;
+            this.btnWord_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWord_CTDNK.ForeColor = System.Drawing.Color.White;
+            this.btnWord_CTDNK.Location = new System.Drawing.Point(355, 209);
+            this.btnWord_CTDNK.Name = "btnWord_CTDNK";
+            this.btnWord_CTDNK.Size = new System.Drawing.Size(100, 38);
+            this.btnWord_CTDNK.TabIndex = 10;
+            this.btnWord_CTDNK.Text = "Xuất Word";
+            this.btnWord_CTDNK.UseVisualStyleBackColor = false;
+            this.btnWord_CTDNK.Click += new System.EventHandler(this.btnWord_CTDNK_Click);
             // 
             // btnDelete_CTDNK
             // 
@@ -257,12 +291,13 @@
             this.btnDelete_CTDNK.FlatAppearance.BorderSize = 0;
             this.btnDelete_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete_CTDNK.ForeColor = System.Drawing.Color.White;
-            this.btnDelete_CTDNK.Location = new System.Drawing.Point(248, 173);
+            this.btnDelete_CTDNK.Location = new System.Drawing.Point(248, 209);
             this.btnDelete_CTDNK.Name = "btnDelete_CTDNK";
             this.btnDelete_CTDNK.Size = new System.Drawing.Size(72, 38);
             this.btnDelete_CTDNK.TabIndex = 9;
             this.btnDelete_CTDNK.Text = "Xóa";
             this.btnDelete_CTDNK.UseVisualStyleBackColor = false;
+            this.btnDelete_CTDNK.Click += new System.EventHandler(this.btnDelete_CTDNK_Click);
             // 
             // btnUpdate_CTDNK
             // 
@@ -270,12 +305,13 @@
             this.btnUpdate_CTDNK.FlatAppearance.BorderSize = 0;
             this.btnUpdate_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate_CTDNK.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate_CTDNK.Location = new System.Drawing.Point(141, 173);
+            this.btnUpdate_CTDNK.Location = new System.Drawing.Point(141, 209);
             this.btnUpdate_CTDNK.Name = "btnUpdate_CTDNK";
             this.btnUpdate_CTDNK.Size = new System.Drawing.Size(72, 38);
             this.btnUpdate_CTDNK.TabIndex = 8;
             this.btnUpdate_CTDNK.Text = "Sửa";
             this.btnUpdate_CTDNK.UseVisualStyleBackColor = false;
+            this.btnUpdate_CTDNK.Click += new System.EventHandler(this.btnUpdate_CTDNK_Click);
             // 
             // btnAdd_CTDNK
             // 
@@ -283,12 +319,13 @@
             this.btnAdd_CTDNK.FlatAppearance.BorderSize = 0;
             this.btnAdd_CTDNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd_CTDNK.ForeColor = System.Drawing.Color.White;
-            this.btnAdd_CTDNK.Location = new System.Drawing.Point(34, 173);
+            this.btnAdd_CTDNK.Location = new System.Drawing.Point(34, 209);
             this.btnAdd_CTDNK.Name = "btnAdd_CTDNK";
             this.btnAdd_CTDNK.Size = new System.Drawing.Size(72, 38);
             this.btnAdd_CTDNK.TabIndex = 7;
             this.btnAdd_CTDNK.Text = "Thêm";
             this.btnAdd_CTDNK.UseVisualStyleBackColor = false;
+            this.btnAdd_CTDNK.Click += new System.EventHandler(this.btnAdd_CTDNK_Click);
             // 
             // txtSoLuongNhap_CTDNK
             // 
@@ -297,12 +334,12 @@
             this.txtSoLuongNhap_CTDNK.Size = new System.Drawing.Size(326, 26);
             this.txtSoLuongNhap_CTDNK.TabIndex = 5;
             // 
-            // txtMDNK_CTDNK
+            // txtMaDNK_CTDNK
             // 
-            this.txtMDNK_CTDNK.Location = new System.Drawing.Point(135, 42);
-            this.txtMDNK_CTDNK.Name = "txtMDNK_CTDNK";
-            this.txtMDNK_CTDNK.Size = new System.Drawing.Size(326, 26);
-            this.txtMDNK_CTDNK.TabIndex = 1;
+            this.txtMaDNK_CTDNK.Location = new System.Drawing.Point(156, 95);
+            this.txtMaDNK_CTDNK.Name = "txtMaDNK_CTDNK";
+            this.txtMaDNK_CTDNK.Size = new System.Drawing.Size(326, 26);
+            this.txtMaDNK_CTDNK.TabIndex = 1;
             // 
             // label7
             // 
@@ -325,7 +362,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 96);
+            this.label9.Location = new System.Drawing.Point(14, 149);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 19);
             this.label9.TabIndex = 0;
@@ -334,7 +371,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 46);
+            this.label10.Location = new System.Drawing.Point(12, 99);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(124, 19);
             this.label10.TabIndex = 0;
@@ -385,6 +422,45 @@
             this.dgvDNKho.TabIndex = 8;
             this.dgvDNKho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDNKho_CellClick);
             // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "MaDNK";
+            this.Column2.HeaderText = "ID";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 48;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "Tennv";
+            this.Column3.HeaderText = "Tên nhân viên";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 133;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "TenNCC";
+            this.Column4.HeaderText = "Nhà cung cấp";
+            this.Column4.Name = "Column4";
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column1.DataPropertyName = "NgayNhap";
+            this.Column1.HeaderText = "Ngày nhập";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 111;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column6.DataPropertyName = "SoLuong";
+            this.Column6.HeaderText = "Tổng số lượng";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 127;
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
@@ -414,6 +490,28 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đơn nhập kho";
+            // 
+            // btnWord_DNK
+            // 
+            this.btnWord_DNK.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnWord_DNK.FlatAppearance.BorderSize = 0;
+            this.btnWord_DNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWord_DNK.ForeColor = System.Drawing.Color.White;
+            this.btnWord_DNK.Location = new System.Drawing.Point(352, 218);
+            this.btnWord_DNK.Name = "btnWord_DNK";
+            this.btnWord_DNK.Size = new System.Drawing.Size(100, 38);
+            this.btnWord_DNK.TabIndex = 19;
+            this.btnWord_DNK.Text = "Xuất Word";
+            this.btnWord_DNK.UseVisualStyleBackColor = false;
+            this.btnWord_DNK.Click += new System.EventHandler(this.btnWord_DNK_Click);
+            // 
+            // dtDate_DNK
+            // 
+            this.dtDate_DNK.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtDate_DNK.Location = new System.Drawing.Point(611, 42);
+            this.dtDate_DNK.Name = "dtDate_DNK";
+            this.dtDate_DNK.Size = new System.Drawing.Size(326, 26);
+            this.dtDate_DNK.TabIndex = 18;
             // 
             // cbNcc_DNK
             // 
@@ -481,7 +579,7 @@
             this.btnExcel_DNK.FlatAppearance.BorderSize = 0;
             this.btnExcel_DNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel_DNK.ForeColor = System.Drawing.Color.White;
-            this.btnExcel_DNK.Location = new System.Drawing.Point(355, 218);
+            this.btnExcel_DNK.Location = new System.Drawing.Point(490, 148);
             this.btnExcel_DNK.Name = "btnExcel_DNK";
             this.btnExcel_DNK.Size = new System.Drawing.Size(100, 38);
             this.btnExcel_DNK.TabIndex = 10;
@@ -591,67 +689,6 @@
             this.tabControl1.Size = new System.Drawing.Size(967, 683);
             this.tabControl1.TabIndex = 3;
             // 
-            // btnWord_DNK
-            // 
-            this.btnWord_DNK.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnWord_DNK.FlatAppearance.BorderSize = 0;
-            this.btnWord_DNK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWord_DNK.ForeColor = System.Drawing.Color.White;
-            this.btnWord_DNK.Location = new System.Drawing.Point(490, 160);
-            this.btnWord_DNK.Name = "btnWord_DNK";
-            this.btnWord_DNK.Size = new System.Drawing.Size(100, 38);
-            this.btnWord_DNK.TabIndex = 19;
-            this.btnWord_DNK.Text = "Xuất Word";
-            this.btnWord_DNK.UseVisualStyleBackColor = false;
-            this.btnWord_DNK.Click += new System.EventHandler(this.btnWord_DNK_Click);
-            // 
-            // dtDate_DNK
-            // 
-            this.dtDate_DNK.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate_DNK.Location = new System.Drawing.Point(611, 42);
-            this.dtDate_DNK.Name = "dtDate_DNK";
-            this.dtDate_DNK.Size = new System.Drawing.Size(326, 26);
-            this.dtDate_DNK.TabIndex = 18;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "MaDNK";
-            this.Column2.HeaderText = "ID";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 48;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.DataPropertyName = "Tennv";
-            this.Column3.HeaderText = "Tên nhân viên";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 133;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.DataPropertyName = "TenNCC";
-            this.Column4.HeaderText = "Nhà cung cấp";
-            this.Column4.Name = "Column4";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column1.DataPropertyName = "NgayNhap";
-            this.Column1.HeaderText = "Ngày nhập";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 111;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column6.DataPropertyName = "SoLuong";
-            this.Column6.HeaderText = "Tổng số lượng";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 127;
-            // 
             // frmKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,22 +740,18 @@
         private System.Windows.Forms.ComboBox cbDichVu_CTDNK;
         public System.Windows.Forms.Button btnSearch_CTDNK;
         public System.Windows.Forms.Button btnReset_CTDNK;
-        private System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.Button btnExcel_CTDNK;
+        private System.Windows.Forms.TextBox txtSearch_CTDNK;
+        public System.Windows.Forms.Button btnWord_CTDNK;
         public System.Windows.Forms.Button btnDelete_CTDNK;
         public System.Windows.Forms.Button btnUpdate_CTDNK;
         public System.Windows.Forms.Button btnAdd_CTDNK;
         private System.Windows.Forms.TextBox txtSoLuongNhap_CTDNK;
-        private System.Windows.Forms.TextBox txtMDNK_CTDNK;
+        private System.Windows.Forms.TextBox txtMaDNK_CTDNK;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvDNKho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         public System.Windows.Forms.Button btnWord_DNK;
         private System.Windows.Forms.DateTimePicker dtDate_DNK;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -726,5 +759,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.TextBox txtMaCTNK_CTDNK;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

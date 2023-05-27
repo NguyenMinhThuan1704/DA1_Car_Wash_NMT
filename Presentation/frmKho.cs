@@ -19,12 +19,16 @@ namespace Presentation
         IDonNhapKhoBLL dnk = new DonNhapKhoBLL();
         INCCBLL provider = new NCCBLL();
         INhanVIenBLL nv = new NhanVienBLL();
+
+        ICTNKBLL ctnk = new CTNKBLL();
+        IDIchVuBLL dv = new DichVuBLL();
         public frmKho()
         {
             InitializeComponent();
         }
         private void frmKho_Load(object sender, EventArgs e)
         {
+            //DonNhapKho
             var dnk_ncc = dnk.getAllJoin();
             dgvDNKho.AutoGenerateColumns = false;
             dgvDNKho.DataSource = dnk_ncc;
@@ -32,6 +36,12 @@ namespace Presentation
             SetDisplayCbb(cbNcc_DNK, "MaNCC", "TenNCC");
             cbNhanVien_DNK.DataSource = nv.getAll();
             SetDisplayCbb(cbNhanVien_DNK, "MaNV", "TenNV");
+
+            //CTDNK
+            dgvCTDNKho.AutoGenerateColumns = false;
+            LoadDataCTNK();
+            cbDichVu_CTDNK.DataSource = dv.getAll();
+            SetDisplayCbb(cbDichVu_CTDNK, "MaDV", "TenDV");
         }
         private void SetDisplayCbb(System.Windows.Forms.ComboBox cbb, string value, string name)
         {
@@ -47,6 +57,7 @@ namespace Presentation
             cbNhanVien_DNK.DataSource = nv.getAll();
             cbNhanVien_DNK.DataSource = nv.getAll();
             txtSoluong_DNK.Text = "";
+            LoadDataDNK();
         }
         public void LoadDataDNK()
         {
@@ -146,7 +157,7 @@ namespace Presentation
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Microsoft Word | *.docx";
-            saveFileDialog.Title = "Lưu thông tin lớp";
+            saveFileDialog.Title = "Lưu thông tin đơn nhập kho";
             saveFileDialog.ShowDialog();
             if (saveFileDialog.FileName != "")
             {
@@ -166,8 +177,126 @@ namespace Presentation
         #endregion DonNhapKho
 
         #region ChiTietDonNhapKho
+        public void LoadDataCTNK()
+        {
+            dgvCTDNKho.DataSource = ctnk.getAllJoin();
+        }
 
+        private void ResetFormCTNK()
+        {
+            txtMaDNK_CTDNK.Text = "";
+            txtGiaNhap_CTDNK.Text = "";
+            txtSoLuongNhap_CTDNK.Text = "";
+            LoadDataCTNK();
+        }
+        private void btnAdd_CTDNK_Click(object sender, EventArgs e)
+        {
+            if (txtMaDNK_CTDNK.Text == "" || txtGiaNhap_CTDNK.Text == "" || txtSoLuongNhap_CTDNK.Text == "")
+                MessageBox.Show("Dữ liệu chưa đủ, xin hãy nhập lại!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+            {
+                try
+                {
+                    int val = ctnk.Insert(new CTNKDTO(int.Parse(txtMaCTNK_CTDNK.Text), int.Parse(txtMaDNK_CTDNK.Text), ((int)cbDichVu_CTDNK.SelectedValue), int.Parse(txtGiaNhap_CTDNK.Text), int.Parse(txtSoLuongNhap_CTDNK.Text)));
+                    if (val == -1)
+                        MessageBox.Show("Thêm dữ liệu không thành công, hãy kiểm tra lại!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    else
+                    {
+                        MessageBox.Show("Đã thêm dữ liệu thành công!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnAdd_CTDNK.Text = "Thêm mới";
+                    }
+                    ResetFormCTNK();
+                }
+                catch
+                {
+                    MessageBox.Show("Không thêm được dữ liệu, có thể do lỗi CSDL!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void btnUpdate_CTDNK_Click(object sender, EventArgs e)
+        {
+            CTNKDTO ctdnk = new CTNKDTO();
+            ctdnk.Mactnk = int.Parse(txtMaCTNK_CTDNK.Text);
+            ctdnk.Madnk = int.Parse(txtMaDNK_CTDNK.Text);
+            ctdnk.Madv = (int)cbDichVu_CTDNK.SelectedValue;
+            ctdnk.Gianhap = int.Parse(txtGiaNhap_CTDNK.Text);
+            ctdnk.Soluongnhap = int.Parse(txtSoLuongNhap_CTDNK.Text);
+            try
+            {
+                int val = ctnk.Update(ctdnk);
+                LoadDataDNK();
+                if (val == -1)
+                    MessageBox.Show("Sửa dữ liệu không thành công, hãy kiểm tra lại!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    MessageBox.Show("Đã sửa dữ liệu thành công!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetFormDNK();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không sửa được dữ liệu, có thể do lỗi CSDL!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnDelete_CTDNK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int val = ctnk.Delete(int.Parse(txtMaCTNK_CTDNK.Text));
+                LoadDataDNK();
+                if (val == -1)
+                    MessageBox.Show("Xóa dữ liệu không thành công, hãy kiểm tra lại!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    MessageBox.Show("Đã xóa dữ liệu thành công!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetFormDNK();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không xóa được dữ liệu, có thể do lỗi CSDL!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnWord_CTDNK_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Microsoft Word | *.docx";
+            saveFileDialog.Title = "Lưu thông tin chi tiết đơn nhập kho";
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.FileName != "")
+            {
+                try
+                {
+                    ctnk.KetXuatWord(@"Template\CTNK.docx", saveFileDialog.FileName);
+                    MessageBox.Show("Kết xuất thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông báo lỗi");
+                }
+            }
+        }
+
+        private void btnReset_CTDNK_Click(object sender, EventArgs e)
+        {
+            ResetFormDNK();
+            LoadDataCTNK();
+        }
+        private void dgvCTDNKho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaCTNK_CTDNK.Text = dgvCTDNKho[0, dgvCTDNKho.CurrentCell.RowIndex].Value.ToString();
+            txtMaDNK_CTDNK.Text = dgvCTDNKho[1, dgvCTDNKho.CurrentCell.RowIndex].Value.ToString();
+            cbDichVu_CTDNK.Text = dgvCTDNKho[2, dgvCTDNKho.CurrentCell.RowIndex].Value.ToString();
+            txtGiaNhap_CTDNK.Text = dgvCTDNKho[3, dgvCTDNKho.CurrentCell.RowIndex].Value.ToString();
+            txtSoLuongNhap_CTDNK.Text = dgvCTDNKho[4, dgvCTDNKho.CurrentCell.RowIndex].Value.ToString();
+        }
+        private void btnSearch_CTDNK_Click(object sender, EventArgs e)
+        {
+            dgvCTDNKho.DataSource = ctnk.SearchLinq(txtSearch_CTDNK.Text);
+        }
         #endregion ChiTietDonNhapKho
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using ChamThiTuyenSinh10;
+﻿using BusinessLogicLayer.Interface;
+using ChamThiTuyenSinh10;
+using DataAccessLayer;
 using Entities;
 using Novacode;
 using System;
@@ -70,12 +72,49 @@ namespace BusinessLogicLayer
                             {
                                 Novacode.Row newRow = myTable.InsertRow(myTable.Rows[cRow], cRow + i + 1);
                                 newRow.Cells[0].Paragraphs.First().Append((i + 1).ToString()).ReplaceText(fTempTableData, "");
-                                newRow.Cells[1].Paragraphs.First().Append(data[i].manv.ToString());
-                                newRow.Cells[2].Paragraphs.First().Append(data[i].tennv);
-                                newRow.Cells[3].Paragraphs.First().Append(data[i].gioitinh.ToString());
-                                newRow.Cells[4].Paragraphs.First().Append(data[i].diachi);
-                                newRow.Cells[5].Paragraphs.First().Append(data[i].dienthoai);
-                                newRow.Cells[6].Paragraphs.First().Append(data[i].ngaysinh.ToString("dd/MM/yyyy"));
+                                newRow.Cells[1].Paragraphs.First().Append(data[i].tennv);
+                                newRow.Cells[2].Paragraphs.First().Append(data[i].gioitinh.ToString());
+                                newRow.Cells[3].Paragraphs.First().Append(data[i].diachi);
+                                newRow.Cells[4].Paragraphs.First().Append(data[i].dienthoai);
+                                newRow.Cells[5].Paragraphs.First().Append(data[i].ngaysinh.ToString("dd/MM/yyyy"));
+                            }
+                            cRow += 1;
+                        }
+                        myTable.RemoveRow(1);
+                    }
+                    document.ReplaceText(fTempTableData, "");
+                    document.Save();
+                    document.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            return res;
+        }
+        public static string CreateKhachHangTemplate(string filename, Dictionary<string, string> dictionaryData, IList<KhachHangDTO> data)
+        {
+            string res = "";
+            try
+            {
+                using (DocX document = DocX.Load(filename))
+                {
+                    ReplaceTime(document, null);
+                    ReplaceData(dictionaryData, null, document);
+                    int cRow = 1;
+                    if (data != null && data.Count > 0)
+                    {
+                        Novacode.Table myTable = FindTableWithText(document.Tables, fTempTableData, out int Row, out int cCell);
+                        if (data.Count > 0)
+                        {
+                            for (int i = 0; i < data.Count; i++)
+                            {
+                                Novacode.Row newRow = myTable.InsertRow(myTable.Rows[cRow], cRow + i + 1);
+                                newRow.Cells[0].Paragraphs.First().Append((i + 1).ToString()).ReplaceText(fTempTableData, "");
+                                newRow.Cells[1].Paragraphs.First().Append(data[i].tenkh);
+                                newRow.Cells[2].Paragraphs.First().Append(data[i].diachi);
+                                newRow.Cells[3].Paragraphs.First().Append(data[i].dienthoai);
                             }
                             cRow += 1;
                         }
@@ -132,6 +171,48 @@ namespace BusinessLogicLayer
             }
             return res;
         }
+
+        public static string CreateChiTietTemplate(string filename, Dictionary<string, string> dictionaryData, IList<ChiTietHoaDonDTO> data)
+        {
+            string res = "";
+            IDIchVuBLL product = new DichVuBLL();
+            try
+            {
+                using (DocX document = DocX.Load(filename))
+                {
+                    ReplaceTime(document, null);
+                    ReplaceData(dictionaryData, null, document);
+                    int cRow = 1;
+                    if (data != null && data.Count > 0)
+                    {
+                        Novacode.Table myTable = FindTableWithText(document.Tables, fTempTableData, out int Row, out int cCell);
+                        if (data.Count > 0)
+                        {
+                            for (int i = 0; i < data.Count; i++)
+                            {
+                                string tendv = product.getAll().FirstOrDefault(dv => dv.madv == data[i].Madv)?.tendv;
+                                Novacode.Row newRow = myTable.InsertRow(myTable.Rows[cRow], cRow + i + 1);
+                                newRow.Cells[0].Paragraphs.First().Append((i + 1).ToString()).ReplaceText(fTempTableData, "");
+                                newRow.Cells[1].Paragraphs.First().Append(tendv);
+                                newRow.Cells[2].Paragraphs.First().Append(data[i].Solansd.ToString());
+                                newRow.Cells[3].Paragraphs.First().Append(data[i].Giadv.ToString());
+                            }
+                            cRow += 1;
+                        }
+                        myTable.RemoveRow(1);
+                    }
+                    document.ReplaceText(fTempTableData, "");
+                    document.Save();
+                    document.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            return res;
+        }
+
         public static string CreateDonNhapKhoTemplate(string filename, Dictionary<string, string> dictionaryData, IList<DonNhapKhoDTO> data)
         {
             string res = "";
@@ -157,6 +238,86 @@ namespace BusinessLogicLayer
                                 newRow.Cells[4].Paragraphs.First().Append(data[i].Tongsoluong.ToString());
 
                             }   
+                            cRow += 1;
+                        }
+                        myTable.RemoveRow(1);
+                    }
+                    document.ReplaceText(fTempTableData, "");
+                    document.Save();
+                    document.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            return res;
+        }
+        public static string CreateCTDNKTemplate(string filename, Dictionary<string, string> dictionaryData, IList<CTNKDTO> data)
+        {
+            string res = "";
+            IDIchVuBLL dv = new DichVuBLL();
+            try
+            {
+                using (DocX document = DocX.Load(filename))
+                {
+                    ReplaceTime(document, null);
+                    ReplaceData(dictionaryData, null, document);
+                    int cRow = 1;
+                    if (data != null && data.Count > 0)
+                    {
+                        Novacode.Table myTable = FindTableWithText(document.Tables, fTempTableData, out int Row, out int cCell);
+                        if (data.Count > 0)
+                        {
+                            for (int i = 0; i < data.Count; i++)
+                            {
+                                string tendv = dv.getAll().FirstOrDefault(dichvu => dichvu.madv == data[i].Madv)?.tendv;
+                                Novacode.Row newRow = myTable.InsertRow(myTable.Rows[cRow], cRow + i + 1);
+                                newRow.Cells[0].Paragraphs.First().Append((i + 1).ToString()).ReplaceText(fTempTableData, "");
+                                newRow.Cells[1].Paragraphs.First().Append(data[i].Madnk.ToString());
+                                newRow.Cells[2].Paragraphs.First().Append(tendv);
+                                newRow.Cells[3].Paragraphs.First().Append(data[i].Gianhap.ToString());
+                                newRow.Cells[4].Paragraphs.First().Append(data[i].Soluongnhap.ToString());
+                            }
+                            cRow += 1;
+                        }
+                        myTable.RemoveRow(1);
+                    }
+                    document.ReplaceText(fTempTableData, "");
+                    document.Save();
+                    document.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message;
+            }
+            return res;
+        }
+        public static string CreateNCCTemplate(string filename, Dictionary<string, string> dictionaryData, IList<NCCDTO> data)
+        {
+            string res = "";
+            try
+            {
+                using (DocX document = DocX.Load(filename))
+                {
+                    ReplaceTime(document, null);
+                    ReplaceData(dictionaryData, null, document);
+                    int cRow = 1;
+                    if (data != null && data.Count > 0)
+                    {
+                        Novacode.Table myTable = FindTableWithText(document.Tables, fTempTableData, out int Row, out int cCell);
+                        if (data.Count > 0)
+                        {
+                            for (int i = 0; i < data.Count; i++)
+                            {
+                                Novacode.Row newRow = myTable.InsertRow(myTable.Rows[cRow], cRow + i + 1);
+                                newRow.Cells[0].Paragraphs.First().Append((i + 1).ToString()).ReplaceText(fTempTableData, "");
+                                newRow.Cells[1].Paragraphs.First().Append(data[i].Tenncc);
+                                newRow.Cells[2].Paragraphs.First().Append(data[i].Diachi);
+                                newRow.Cells[3].Paragraphs.First().Append(data[i].Dienthoai);
+
+                            }
                             cRow += 1;
                         }
                         myTable.RemoveRow(1);

@@ -55,6 +55,14 @@ namespace BusinessLogicLayer
             return dal.Insert(kh.makh, kh.tenkh, kh.maloaixe, kh.diachi, kh.dienthoai);
         }
 
+        public void KetXuatWord(string templatePath, string exportPath)
+        {
+            IList<KhachHangDTO> list = getAll();
+            Dictionary<string, string> dictionaryData = new Dictionary<string, string>();
+            System.IO.File.Copy(templatePath, exportPath, true);
+            ExportDocx.CreateKhachHangTemplate(exportPath, dictionaryData, list);
+        }
+
         public IList<KhachHangDTO> SearchLinq(string value)
         {
             return getAll().Where(x => string.IsNullOrEmpty(value) || x.tenkh.Contains(value) ||

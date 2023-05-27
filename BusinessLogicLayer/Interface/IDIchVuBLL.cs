@@ -22,5 +22,6 @@ namespace BusinessLogicLayer.Interface
         void KetXuatWord(string templatePath, string exportPath);
 
         List<dynamic> getAllJoin(ILoaiDichVuBLL loaidv);
+        int GetSoluong(int madv);
     }
 }

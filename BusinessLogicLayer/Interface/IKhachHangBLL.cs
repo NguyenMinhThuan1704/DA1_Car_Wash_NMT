@@ -16,5 +16,6 @@ namespace BusinessLogicLayer.Interface
         IList<KhachHangDTO> SearchLinq(string value);
 
         List<dynamic> getAllJoin(ILoaiXeBLL loaixe);
+        void KetXuatWord(string templatePath, string exportPath);
     }
 }

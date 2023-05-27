@@ -101,5 +101,14 @@ namespace BusinessLogicLayer
                              select new { MaDv = dv.madv, TenDv = dv.tendv, MaLoaiXe = dv.maloaidv, GiaDv = dv.giadv, SoLuong = dv.soluong, TenLoaiDV = pd.TenLoaiDV });
             return dv_loaidv.Cast<dynamic>().ToList();
         }
+
+        public int GetSoluong(int madv)
+        {
+            int slg = getAll()
+                .Where(t => t.madv == madv)
+                .Select(t => t.soluong)
+                .FirstOrDefault();
+            return slg;
+        }
     }
 }

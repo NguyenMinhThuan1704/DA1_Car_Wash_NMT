@@ -121,5 +121,30 @@ namespace Presentation
             txtAddress.Text = dgvNCC[2, dgvNCC.CurrentCell.RowIndex].Value.ToString();
             txtPhone.Text = dgvNCC[3, dgvNCC.CurrentCell.RowIndex].Value.ToString();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dgvNCC.DataSource = provider.SearchLinq(txtSearch.Text);
+        }
+
+        private void btnWord_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Microsoft Word | *.docx";
+            saveFileDialog.Title = "Lưu thông tin nhà cung cấp";
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.FileName != "")
+            {
+                try
+                {
+                    provider.KetXuatWord(@"Template\NCC.docx", saveFileDialog.FileName);
+                    MessageBox.Show("Kết xuất thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông báo lỗi");
+                }
+            }
+        }
     }
 }

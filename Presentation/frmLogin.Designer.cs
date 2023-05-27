@@ -99,6 +99,7 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // chk1
             // 
@@ -177,6 +178,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmLogin";
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

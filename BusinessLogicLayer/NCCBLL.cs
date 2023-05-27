@@ -50,9 +50,19 @@ namespace BusinessLogicLayer
             else return -1;
         }
 
-        public IList<NCCDTO> SearchLinq(NCCDTO cls)
+        public void KetXuatWord(string templatePath, string exportPath)
         {
-            return getAll().Where(x => (string.IsNullOrEmpty(cls.Mancc.ToString()) || x.Mancc.ToString().Contains(cls.Mancc.ToString()))).ToList();
+            IList<NCCDTO> list = getAll();
+            Dictionary<string, string> dictionaryData = new Dictionary<string, string>();
+            System.IO.File.Copy(templatePath, exportPath, true);
+            ExportDocx.CreateNCCTemplate(exportPath, dictionaryData, list);
+        }
+
+        public IList<NCCDTO> SearchLinq(string value)
+        {
+            return getAll().Where(x => string.IsNullOrEmpty(value) || x.Tenncc.Contains(value) ||
+                    (x.Mancc.ToString() == value) ||
+                    (string.IsNullOrEmpty(value) || x.Diachi.Contains(value))).ToList();
         }
 
         public int Update(NCCDTO cls)

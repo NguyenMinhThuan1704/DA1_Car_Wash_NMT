@@ -135,5 +135,25 @@ namespace Presentation
         {
             dgvCustomer.DataSource = KH.SearchLinq(txtSearch.Text);
         }
+
+        private void btnWord_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Microsoft Word | *.docx";
+            saveFileDialog.Title = "Lưu thông tin khách hàng";
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.FileName != "")
+            {
+                try
+                {
+                    KH.KetXuatWord(@"Template\KhachHang.docx", saveFileDialog.FileName);
+                    MessageBox.Show("Kết xuất thành công!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Thông báo lỗi");
+                }
+            }
+        }
     }
 }

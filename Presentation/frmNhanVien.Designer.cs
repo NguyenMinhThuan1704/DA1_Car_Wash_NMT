@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnWord = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -69,18 +69,19 @@
             this.txtSearch.Size = new System.Drawing.Size(241, 26);
             this.txtSearch.TabIndex = 12;
             // 
-            // btnExcel
+            // btnWord
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnExcel.FlatAppearance.BorderSize = 0;
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Location = new System.Drawing.Point(361, 218);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(100, 38);
-            this.btnExcel.TabIndex = 10;
-            this.btnExcel.Text = "Xuất Excel";
-            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnWord.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnWord.FlatAppearance.BorderSize = 0;
+            this.btnWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWord.ForeColor = System.Drawing.Color.White;
+            this.btnWord.Location = new System.Drawing.Point(361, 218);
+            this.btnWord.Name = "btnWord";
+            this.btnWord.Size = new System.Drawing.Size(100, 38);
+            this.btnWord.TabIndex = 10;
+            this.btnWord.Text = "Xuất Word";
+            this.btnWord.UseVisualStyleBackColor = false;
+            this.btnWord.Click += new System.EventHandler(this.btnWord_Click);
             // 
             // btnDelete
             // 
@@ -315,7 +316,7 @@
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Controls.Add(this.btnExcel);
+            this.groupBox1.Controls.Add(this.btnWord);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -396,7 +397,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtSearch;
-        public System.Windows.Forms.Button btnExcel;
+        public System.Windows.Forms.Button btnWord;
         public System.Windows.Forms.Button btnDelete;
         public System.Windows.Forms.Button btnUpdate;
         public System.Windows.Forms.Button btnAdd;
